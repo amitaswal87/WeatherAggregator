@@ -39,3 +39,28 @@ Multithreading:
 DispatchGroup: For synchronizing concurrent API requests.
 OperationQueue: For managing API calls in parallel.
 Core Data's Main and Private Contexts: Ensuring thread-safe data insertion and UI rendering.
+
+**Design and Flow**
+
+To implement the described functionality in a clean, efficient, and scalable way, we'll break the task into components that align with best practices in modern iOS development using Swift, Combine, MVVM (Model-View-ViewModel) architecture, and CoreData (or any other database solution). Here's a polished version of how the app should be structured:
+1. Architecture Overview
+	•	Model: Represents the data objects fetched from the APIs.
+	•	ViewModel: Manages fetching data from the APIs, storing it in the database, and sorting the data. It also exposes a @Published property to notify the view when the data changes.
+	•	View: Observes changes from the ViewModel and updates the UI. It also handles user interactions such as sorting, refreshing, and searching.
+2. Key Components
+
+2.1 Model
+The model represents the data structure. We'll assume a model that stores the weather data for each city.
+
+2.2 ViewModel
+The ViewModel manages data fetching, sorting, and interactions with the database and the APIs.
+
+2.3 Network Service
+The network service handles the API calls. For simplicity, it is protocol-based, making it easy to mock during testing.
+
+2.4 Database Service
+The database service saves and fetches weather data from the local database (CoreData ).
+
+2.5 View (SwiftUI)
+The view observes the @Published properties from the weatherViewModel and updates the UI accordingly. It also provides buttons for sorting and a search bar for filtering.
+
