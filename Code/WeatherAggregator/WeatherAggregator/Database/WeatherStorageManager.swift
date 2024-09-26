@@ -38,7 +38,11 @@ class WeatherStorageManager : StorageManagerDelegate,WeatherStorageManagerDelega
             // Save the context to persist data
             do {
                 try backgroundContext.save()
-//                print("Data saved successfully.")
+                print("Data saved successfully.")
+                
+                //TODO: 
+                
+                
             } catch {
                 print("Failed to save data: \(error.localizedDescription)")
             }

@@ -57,6 +57,7 @@ class WeatherViewModel : ObservableObject{
         completion()
     }
     func fetchFromAPI(){
+        //TODO: Lock missing. TBD
         self.apiData.removeAll()
         let finalURLArray = [URL(string: kBerlinWeatherURL),
                              URL(string: kLondonWeatherURL),
@@ -85,8 +86,9 @@ class WeatherViewModel : ObservableObject{
         }
         
         dispatchGroup.notify(queue: .main) {
-            self.filteredApiData = self.apiData
             self.saveDataToDatabase()
+            self.filteredApiData = self.apiData
+
         }
     }
     
